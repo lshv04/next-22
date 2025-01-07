@@ -66,8 +66,8 @@ const SheetContent = React.forwardRef<
     >
       {/* Adicionado Header com Title e Description */}
       <SheetHeader>
-        <SheetTitle>Sheet Title</SheetTitle>
-        <SheetDescription>This is a description of the sheet content.</SheetDescription>
+        <SheetTitle></SheetTitle>
+        <SheetDescription></SheetDescription>
       </SheetHeader>
 
       {children}
