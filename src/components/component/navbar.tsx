@@ -13,7 +13,7 @@ export function Navbar() {
   };
 
   return (
-    <header className=" flex  h-20 w-full shrink-0 items-center justify-between px-4 md:px-6 bord bg-gray-900 text-white shadow-lg z-50">
+    <header className=" flex  h-20 w-full shrink-0 items-center justify-between px-4 md:px-6 bord bg-gray-900 text-white shadow-lg z-1000">
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild>
           <Button variant="outline" size="icon" className="lg:hidden bord">
@@ -26,10 +26,10 @@ export function Navbar() {
             LH's Movies
             <span className="sr-only">Leandro´s Logo</span>
           </Link>
-          <div className="grid gap-2 py-6">
+          <div className="grid gap-2 ">
           <Link
               href="/"
-              className="flex w-full items-center py-2 mt-6 text-lg font-semibold"
+              className="flex w-full items-center py-2  text-lg font-semibold"
               prefetch={false}
               onClick={handleLinkClick} // Fecha o menu ao clicar
             >
