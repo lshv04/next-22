@@ -22,13 +22,13 @@ export function Navbar() {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="bord">
-          <Link href="#" className="mr-6  hidden lg:flex bord" prefetch={false}>
+          <Link href="/" className="mr-6  hidden lg:flex bord" prefetch={false}>
             LH's Movies
             <span className="sr-only">Leandro´s Logo</span>
           </Link>
           <div className="grid gap-2 py-6">
             <Link
-              href="#"
+              href="/now-playing"
               className="flex w-full items-center py-2 mt-6 text-lg font-semibold bord"
               prefetch={false}
               onClick={handleLinkClick} // Fecha o menu ao clicar
@@ -36,7 +36,7 @@ export function Navbar() {
               Now Playing
             </Link>
             <Link
-              href="#"
+              href="/popular"
               className="flex w-full items-center py-2 text-lg font-semibold"
               prefetch={false}
               onClick={handleLinkClick} // Fecha o menu ao clicar
@@ -44,7 +44,7 @@ export function Navbar() {
               Popular
             </Link>
             <Link
-              href="#"
+              href="/top-rated"
               className="flex w-full items-center py-2 text-lg font-semibold"
               prefetch={false}
               onClick={handleLinkClick} // Fecha o menu ao clicar
@@ -52,7 +52,7 @@ export function Navbar() {
               Top Rated
             </Link>
             <Link
-              href="#"
+              href="/upcoming"
               className="flex w-full items-center py-2 text-lg font-semibold"
               prefetch={false}
               onClick={handleLinkClick} // Fecha o menu ao clicar
@@ -62,34 +62,34 @@ export function Navbar() {
           </div>
         </SheetContent>
       </Sheet>
-      <Link href="#" className="mr-6 bord" prefetch={false}>
+      <Link href="/" className="mr-6 bord" prefetch={false}>
         LH's Movies
         <span className="sr-only">Leandro´s Logo</span>
       </Link>
       <nav className="mx-auto hidden lg:flex gap-6 bord ">
         <Link
-          href="#"
+          href="/now-playing"
           className="group inline-flex h-9 w-max items-center justify-center  px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
           prefetch={false}
         >
           Now Playing
         </Link>
         <Link
-          href="#"
+          href="/popular"
          className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
           prefetch={false}
         >
           Popular
         </Link>
         <Link
-          href="#"
+          href="top-rated"
           className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
           prefetch={false}
         >
           Top Rated
         </Link>
         <Link
-          href="#"
+          href="upcoming"
           className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
           prefetch={false}
         >
