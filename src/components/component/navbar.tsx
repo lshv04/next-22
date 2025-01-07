@@ -33,7 +33,7 @@ export function Navbar() {
               prefetch={false}
               onClick={handleLinkClick} // Fecha o menu ao clicar
             >
-              Home
+              Now Playing
             </Link>
             <Link
               href="#"
@@ -41,7 +41,7 @@ export function Navbar() {
               prefetch={false}
               onClick={handleLinkClick} // Fecha o menu ao clicar
             >
-              About
+              Popular
             </Link>
             <Link
               href="#"
@@ -49,7 +49,7 @@ export function Navbar() {
               prefetch={false}
               onClick={handleLinkClick} // Fecha o menu ao clicar
             >
-              Services
+              Top Rated
             </Link>
             <Link
               href="#"
@@ -57,7 +57,7 @@ export function Navbar() {
               prefetch={false}
               onClick={handleLinkClick} // Fecha o menu ao clicar
             >
-              Contact
+              Upcoming
             </Link>
           </div>
         </SheetContent>
@@ -69,31 +69,31 @@ export function Navbar() {
       <nav className="mx-auto hidden lg:flex gap-6 bord ">
         <Link
           href="#"
-          className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
+          className="group inline-flex h-9 w-max items-center justify-center  px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
           prefetch={false}
         >
-          Home
+          Now Playing
         </Link>
         <Link
           href="#"
          className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
           prefetch={false}
         >
-          About
+          Popular
         </Link>
         <Link
           href="#"
           className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
           prefetch={false}
         >
-          Services
+          Top Rated
         </Link>
         <Link
           href="#"
           className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
           prefetch={false}
         >
-          Contact
+          Upcoming
         </Link>
       </nav>
     </header>
