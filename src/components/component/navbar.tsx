@@ -21,20 +21,29 @@ export function Navbar() {
             <span className="sr-only bord">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="bord">
+        <SheetContent side="top" className="bord">
           <Link href="/" className="mr-6  hidden lg:flex bord" prefetch={false}>
             LH's Movies
             <span className="sr-only">Leandro´s Logo</span>
           </Link>
           <div className="grid gap-2 py-6">
+          <Link
+              href="/"
+              className="flex w-full items-center py-2 mt-6 text-lg font-semibold"
+              prefetch={false}
+              onClick={handleLinkClick} // Fecha o menu ao clicar
+            >
+              Home
+            </Link>
             <Link
               href="/now-playing"
-              className="flex w-full items-center py-2 mt-6 text-lg font-semibold bord"
+              className="flex w-full items-center py-2  text-lg font-semibold bord"
               prefetch={false}
               onClick={handleLinkClick} // Fecha o menu ao clicar
             >
               Now Playing
             </Link>
+       
             <Link
               href="/popular"
               className="flex w-full items-center py-2 text-lg font-semibold"
