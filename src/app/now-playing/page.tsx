@@ -6,7 +6,7 @@ const NowPlaying: React.FC = () => {
     <div style={{ padding: '20px' }} className='bord'>
       <h1>Now Playing</h1>
       <p>Explore os filmes atualmente em exibição nos cinemas.</p>
-      <Fetch/>
+      <Fetch endpoint="now_playing" />
     </div>
   );
 };
