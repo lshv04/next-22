@@ -150,7 +150,7 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
         ))}
       </div>
       {loading && (
-        <div className="flex justify-center">
+        <div className="flex justify-center my-10">
           <Spinner />
         </div>
       )}
