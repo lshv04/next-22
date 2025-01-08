@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import { genres } from "@/genres";
+import GoldenStarBadge from "../components/GoldenStarBadge";
 
 interface Movie {
   id: number;
   title: string;
   overview: string;
   poster_path: string;
-  genre_ids: number[]; 
+  genre_ids: number[];
   release_date: string;
 }
 
@@ -76,23 +77,32 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
         {movies.map((movie) => (
           <div
             key={movie.id}
-            className="bg-white shadow-md rounded-lg overflow-hidden"
+            className="bg-white shadow-md rounded-lg overflow-hidden bord flex justify-between items-center flex-col"
           >
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-              className="w-full object-cover"
-            />
-            <div className="p-4">
+            <div className="bord ">
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                className="w-full object-cover"
+              />
+
               {/* Exibindo os nomes dos gêneros */}
-              <p>
-                <small>
-                  {getGenreNames(movie.genre_ids).join(", ")}
-                </small>
+              <p className="px-4">
+                <small>{getGenreNames(movie.genre_ids).join(", ")}</small>
               </p>
-              <h2 className="text-lg font-semibold">{movie.title}</h2>
-              <p><small>Release date: {movie.release_date}</small></p>
-              <p className="text-sm text-gray-600 mt-2">{movie.overview}</p>
+              <h2 className="text-lg font-semibold bord px-4">{movie.title}</h2>
+              <p className="px-4">
+                <small>Release date: {movie.release_date}</small>
+              </p>
+              <p className="text-sm text-gray-600 mt-2 px-4">
+                {movie.overview}
+              </p>
+            </div>
+            <div className="flex  justify-between items-center w-full bord p-4">
+              <div>
+                <GoldenStarBadge grade={5} />
+              </div>
+              <div>Badge</div>
             </div>
           </div>
         ))}
