@@ -11,6 +11,7 @@ interface Movie {
   poster_path: string;
   genre_ids: number[];
   release_date: string;
+  vote_average:number;
 }
 
 interface FetchProps {
@@ -100,7 +101,7 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
             </div>
             <div className="flex  justify-between items-center w-full bord p-4">
               <div>
-                <GoldenStarBadge grade={5} />
+                <GoldenStarBadge grade={movie.vote_average} />
               </div>
               <div>Badge</div>
             </div>
