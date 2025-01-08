@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { genres } from "@/genres";
 import GoldenStarBadge from "../components/GoldenStarBadge";
+import Link from "next/link";
 
 interface Movie {
   id: number;
@@ -11,7 +12,7 @@ interface Movie {
   poster_path: string;
   genre_ids: number[];
   release_date: string;
-  vote_average:number;
+  vote_average: number;
 }
 
 interface FetchProps {
@@ -103,7 +104,12 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
               <div>
                 <GoldenStarBadge grade={movie.vote_average} />
               </div>
-              <div>Badge</div>
+              <Link
+                href="/#"
+                className="inline-flex items-center bg-red-500 rounded-full px-3 py-1 transition-transform duration-300 lg:hover:scale-110"
+              >
+                <p className="text-lg font-bold text-gray-800">More</p>
+              </Link>
             </div>
           </div>
         ))}
