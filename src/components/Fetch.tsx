@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { genres } from "@/genres";
 import GoldenStarBadge from "../components/GoldenStarBadge";
 import Link from "next/link";
+import Spinner from "./Spinner";
 
 interface Movie {
   id: number;
@@ -61,7 +62,12 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
     fetchMovies();
   }, [endpoint]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div className="flex justify-center">
+        <Spinner />
+      </div>
+    );
   if (error) return <p>Error: {error}</p>;
 
   // Função para mapear IDs para nomes de gêneros
