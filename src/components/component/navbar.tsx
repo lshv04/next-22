@@ -15,17 +15,21 @@ export function Navbar() {
   };
 
   const getLinkClass = (href:string) => {
-    // Retorna a classe 'ativo' se o caminho atual corresponder ao href
     return pathname === href
-      ? "text-blue-500 font-bold border-b-2 border-blue-500" // Classe ativa
-      : "text-white lg:text-white text-black"; // Texto preto em telas menores e branco em maiores
+      ? "text-blue-500 font-bold border-b-2 border-blue-500"
+      : "text-white md:text-white text-black";
   };
 
   return (
     <header className="flex h-20 w-full shrink-0 items-center justify-between px-4 md:px-6 bord bg-gray-900 text-white shadow-lg z-1000">
+      {/* Menu Hambúrguer apenas em telas menores */}
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild>
-          <Button variant="outline" size="icon" className="lg:hidden bord">
+          <Button
+            variant="outline"
+            size="icon"
+            className="md:hidden bord" // Esconde em telas grandes
+          >
             <MenuIcon className="h-6 w-6" />
             <span className="sr-only bord">Toggle navigation menu</span>
           </Button>
@@ -89,7 +93,8 @@ export function Navbar() {
         LH's Movies
         <span className="sr-only">Leandro´s Logo</span>
       </Link>
-      <nav className="mx-auto hidden lg:flex gap-6 bord">
+      {/* Menu Tradicional apenas em telas grandes */}
+      <nav className="hidden md:flex gap-6 bord mx-auto">
         <Link
           href="/now-playing"
           className={`group inline-flex h-9 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors ${getLinkClass(
