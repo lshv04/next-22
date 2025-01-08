@@ -17,7 +17,7 @@ export function Navbar() {
   const getLinkClass = (href:string) => {
     return pathname === href
       ? "text-blue-500 font-bold border-b-2 border-blue-500"
-      : "text-white md:text-white text-black";
+      : "text-black md:text-white ";
   };
 
   return (
