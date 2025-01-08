@@ -11,6 +11,14 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    files: ["**/*.ts", "**/*.tsx"], // Aplica as regras apenas a arquivos TS/TSX
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off", // Desativa a proibição de `any`
+      "react/no-unescaped-entities": "off", // Permite caracteres não escapados como `'`
+      "@next/next/no-img-element": "off", // Permite o uso de `<img>` no Next.js
+    },
+  },
 ];
 
 export default eslintConfig;

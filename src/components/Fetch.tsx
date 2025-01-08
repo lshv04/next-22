@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
 
 interface Movie {
   id: number;
@@ -25,23 +24,30 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
         setLoading(true);
         setError(null);
 
-        const options = {
-          method: 'GET',
+        // Configurações para o fetch com cache integrado do Next.js
+        const options: RequestInit = {
+          method: "GET",
           headers: {
-            accept: 'application/json',
+            accept: "application/json",
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_BEARER}`,
           },
+          next: { revalidate: 1800 }, // Revalida a cada 30 minutos
         };
 
-        const response = await axios.get(
+        const response = await fetch(
           `https://api.themoviedb.org/3/movie/${endpoint}?language=en-US&page=1`,
           options
         );
 
-        console.log('Fetch Response:', response.data); // Exibe o resultado completo no console
-        setMovies(response.data.results || []);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Fetch Response:", data); // Para depuração
+        setMovies(data.results || []);
       } catch (err: any) {
-        setError(err.message || 'An error occurred');
+        setError(err.message || "An error occurred");
       } finally {
         setLoading(false);
       }
