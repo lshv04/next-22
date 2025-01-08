@@ -71,7 +71,7 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
             <img
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.title}
-              className="w-full h-64 object-cover"
+              className="w-full object-cover"
             />
             <div className="p-4">
               <h2 className="text-lg font-semibold">{movie.title}</h2>
