@@ -1,12 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { genres } from "@/genres";
 
 interface Movie {
   id: number;
   title: string;
   overview: string;
   poster_path: string;
+  genre_ids: number[]; 
+  release_date: string;
 }
 
 interface FetchProps {
@@ -24,14 +27,13 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
         setLoading(true);
         setError(null);
 
-        // Configurações para o fetch com cache integrado do Next.js
         const options: RequestInit = {
           method: "GET",
           headers: {
             accept: "application/json",
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_BEARER}`,
           },
-          next: { revalidate: 1800 }, // Revalida a cada 30 minutos
+          next: { revalidate: 1800 },
         };
 
         const response = await fetch(
@@ -44,7 +46,7 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
         }
 
         const data = await response.json();
-        console.log("Fetch Response:", data); // Para depuração
+        console.log("Fetch Response:", data);
         setMovies(data.results || []);
       } catch (err: any) {
         setError(err.message || "An error occurred");
@@ -58,6 +60,14 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
+
+  // Função para mapear IDs para nomes de gêneros
+  const getGenreNames = (ids: number[]): string[] => {
+    return ids.map((id) => {
+      const genre = genres.find((g) => g.id === id);
+      return genre ? genre.name : "Unknown";
+    });
+  };
 
   return (
     <div className="container mx-auto p-4">
@@ -74,7 +84,14 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
               className="w-full object-cover"
             />
             <div className="p-4">
+              {/* Exibindo os nomes dos gêneros */}
+              <p>
+                <small>
+                  {getGenreNames(movie.genre_ids).join(", ")}
+                </small>
+              </p>
               <h2 className="text-lg font-semibold">{movie.title}</h2>
+              <p><small>Release date: {movie.release_date}</small></p>
               <p className="text-sm text-gray-600 mt-2">{movie.overview}</p>
             </div>
           </div>
