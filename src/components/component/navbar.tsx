@@ -21,7 +21,7 @@ export function Navbar() {
   };
 
   return (
-    <header className="flex  h-20 w-full shrink-0 items-center justify-between px-4 md:px-6 bord bg-gray-900 text-white shadow-lg z-1000">
+    <header className="flex  h-20 w-full shrink-0 items-center justify-between px-4 md:px-6 bord bg-gray-900 text-white shadow-lg z-1000 fixed top-0">
       {/* Menu Hambúrguer apenas em telas menores */}
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild>
