@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { genres } from "@/genres";
 import GoldenStarBadge from "../components/GoldenStarBadge";
 import Link from "next/link";
@@ -22,61 +22,92 @@ interface FetchProps {
 
 const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [page, setPage] = useState<number>(1);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [hasMore, setHasMore] = useState<boolean>(true);
+
+  const observerRef = useRef<HTMLDivElement | null>(null);
+  const fetchedPages = useRef<Set<number>>(new Set()); // Rastreamento de páginas já buscadas
+
+  const fetchMovies = async (pageNumber: number) => {
+    if (!hasMore || loading || fetchedPages.current.has(pageNumber)) return;
+
+    try {
+      setLoading(true);
+      setError(null);
+
+      const options: RequestInit = {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_BEARER}`,
+        },
+        next: { revalidate: 1800 }, // Cache de 30 minutos
+      };
+
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${endpoint}?language=en-US&page=${pageNumber}`,
+        options
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Fetch Response:", data);
+
+      // Atualiza os filmes sem duplicar IDs
+      setMovies((prevMovies) => {
+        const newMovies = data.results.filter(
+          (movie: Movie) => !prevMovies.some((m) => m.id === movie.id)
+        );
+        return [...prevMovies, ...newMovies];
+      });
+
+      fetchedPages.current.add(pageNumber); // Marca a página como carregada
+      setHasMore(data.page < data.total_pages); // Verifica se há mais páginas
+    } catch (err: any) {
+      setError(err.message || "An error occurred");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const options: RequestInit = {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_BEARER}`,
-          },
-          next: { revalidate: 1800 },
-        };
-
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${endpoint}?language=en-US&page=1`,
-          options
-        );
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !loading) {
+          setPage((prevPage) => prevPage + 1);
         }
+      },
+      { threshold: 1.0 }
+    );
 
-        const data = await response.json();
-        console.log("Fetch Response:", data);
-        setMovies(data.results || []);
-      } catch (err: any) {
-        setError(err.message || "An error occurred");
-      } finally {
-        setLoading(false);
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
+    }
+
+    return () => {
+      if (observerRef.current) {
+        observer.unobserve(observerRef.current);
       }
     };
+  }, [loading]);
 
-    fetchMovies();
-  }, [endpoint]);
+  useEffect(() => {
+    fetchMovies(page);
+  }, [page]);
 
-  if (loading)
-    return (
-      <div className="flex justify-center">
-        <Spinner />
-      </div>
-    );
-  if (error) return <p>Error: {error}</p>;
-
-  // Função para mapear IDs para nomes de gêneros
   const getGenreNames = (ids: number[]): string[] => {
     return ids.map((id) => {
       const genre = genres.find((g) => g.id === id);
       return genre ? genre.name : "Unknown";
     });
   };
+
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="container mx-auto p-4">
@@ -87,14 +118,12 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
             key={movie.id}
             className="bg-white shadow-md rounded-lg overflow-hidden bord flex justify-between items-center flex-col"
           >
-            <div className="bord ">
+            <div className="bord">
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
                 className="w-full object-cover"
               />
-
-              {/* Exibindo os nomes dos gêneros */}
               <p className="px-4">
                 <small>{getGenreNames(movie.genre_ids).join(", ")}</small>
               </p>
@@ -106,7 +135,7 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
                 {movie.overview}
               </p>
             </div>
-            <div className="flex  justify-between items-center w-full bord p-4">
+            <div className="flex justify-between items-center w-full bord p-4">
               <div>
                 <GoldenStarBadge grade={movie.vote_average} />
               </div>
@@ -120,6 +149,12 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
           </div>
         ))}
       </div>
+      {loading && (
+        <div className="flex justify-center">
+          <Spinner />
+        </div>
+      )}
+      <div ref={observerRef} className="h-10"></div>
     </div>
   );
 };
