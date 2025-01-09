@@ -72,27 +72,33 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
   }
 
   return (
-    <div className="mt-40">
-      <h1>Detalhes do Filme</h1>
-      <p><strong>ID do filme:</strong> {id}</p>
-      <p><strong>Título:</strong> {movieDetails.title}</p>
-      <p><strong>Descrição:</strong> {movieDetails.overview}</p>
-      <p><strong>Data de lançamento:</strong> {movieDetails.release_date}</p>
-      <p><strong>Popularidade:</strong> {movieDetails.popularity}</p>
-      <p><strong>Nota média:</strong> {movieDetails.vote_average}</p>
-      <p><strong>Contagem de votos:</strong> {movieDetails.vote_count}</p>
-      <p><strong>Orçamento:</strong> ${movieDetails.budget.toLocaleString()}</p>
-      <p><strong>Idioma original:</strong> {movieDetails.original_language.toUpperCase()}</p>
-      <p><strong>Status:</strong> {movieDetails.status}</p>
-      <p><strong>País de origem:</strong> {movieDetails.production_countries?.map((country: any) => country.name).join(', ')}</p>
-      <p><strong>Homepage:</strong> <a href={movieDetails.homepage} target="_blank" rel="noopener noreferrer">{movieDetails.homepage}</a></p>
-      <div>
-        <strong>Poster:</strong>
-        <img
-          src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
-          alt={movieDetails.title}
-          className="mt-4"
-        />
+    <div className="mt-20 p-6">
+      <h1 className="text-3xl font-bold mb-8">Detalhes do Filme</h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Imagem do Poster */}
+        <div className="md:col-span-1">
+          <img
+            src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+            alt={movieDetails.title}
+            className="rounded-lg shadow-lg w-full"
+          />
+        </div>
+
+        {/* Informações do Filme */}
+        <div className="md:col-span-2">
+          <p><strong>ID do filme:</strong> {id}</p>
+          <p><strong>Título:</strong> {movieDetails.title}</p>
+          <p><strong>Descrição:</strong> {movieDetails.overview}</p>
+          <p><strong>Data de lançamento:</strong> {movieDetails.release_date}</p>
+          <p><strong>Popularidade:</strong> {movieDetails.popularity}</p>
+          <p><strong>Nota média:</strong> {movieDetails.vote_average}</p>
+          <p><strong>Contagem de votos:</strong> {movieDetails.vote_count}</p>
+          <p><strong>Orçamento:</strong> ${movieDetails.budget.toLocaleString()}</p>
+          <p><strong>Idioma original:</strong> {movieDetails.original_language.toUpperCase()}</p>
+          <p><strong>Status:</strong> {movieDetails.status}</p>
+          <p><strong>País de origem:</strong> {movieDetails.production_countries?.map((country: any) => country.name).join(', ')}</p>
+          <p><strong>Homepage:</strong> <a href={movieDetails.homepage} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{movieDetails.homepage}</a></p>
+        </div>
       </div>
     </div>
   );
