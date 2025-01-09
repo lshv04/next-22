@@ -18,8 +18,7 @@ const options = {
 };
 
 const MovieDetails = ({ params }: MovieDetailsProps) => {
-  
-  const [id, setId] = useState<number | null>(null);   /*   necessario para páginas usando router do next */  
+  const [id, setId] = useState<number | null>(null);
   const [movieDetails, setMovieDetails] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -44,7 +43,7 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
         );
         const data = await response.json();
         setMovieDetails(data);
-        console.log(data);
+        console.log(data); // Para debug
       } catch (error) {
         console.error('Erro ao buscar detalhes do filme:', error);
       } finally {
@@ -75,9 +74,26 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
   return (
     <div className="mt-40">
       <h1>Detalhes do Filme</h1>
-      <p>id do filme: {id}</p>
-      <p>Título: {movieDetails.title}</p>
-      <p>Descrição: {movieDetails.overview}</p>
+      <p><strong>ID do filme:</strong> {id}</p>
+      <p><strong>Título:</strong> {movieDetails.title}</p>
+      <p><strong>Descrição:</strong> {movieDetails.overview}</p>
+      <p><strong>Data de lançamento:</strong> {movieDetails.release_date}</p>
+      <p><strong>Popularidade:</strong> {movieDetails.popularity}</p>
+      <p><strong>Nota média:</strong> {movieDetails.vote_average}</p>
+      <p><strong>Contagem de votos:</strong> {movieDetails.vote_count}</p>
+      <p><strong>Orçamento:</strong> ${movieDetails.budget.toLocaleString()}</p>
+      <p><strong>Idioma original:</strong> {movieDetails.original_language.toUpperCase()}</p>
+      <p><strong>Status:</strong> {movieDetails.status}</p>
+      <p><strong>País de origem:</strong> {movieDetails.production_countries?.map((country: any) => country.name).join(', ')}</p>
+      <p><strong>Homepage:</strong> <a href={movieDetails.homepage} target="_blank" rel="noopener noreferrer">{movieDetails.homepage}</a></p>
+      <div>
+        <strong>Poster:</strong>
+        <img
+          src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+          alt={movieDetails.title}
+          className="mt-4"
+        />
+      </div>
     </div>
   );
 };
