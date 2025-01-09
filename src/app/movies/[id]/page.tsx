@@ -113,6 +113,10 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
           {/* Grid for Additional Information */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 bord">
             <div className="bord flex flex-col gap-4">
+            <p>
+                <strong>Run time:</strong> <br />
+                {movieDetails.runtime}
+              </p>
               <p>
                 <strong>Original Language:</strong> <br />
                 {movieDetails.original_language.toUpperCase()}
@@ -154,9 +158,9 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
           <div className="bord my-4">
             <Link
               href={`${id}/cast`}
-              className="inline-flex items-center bg-red-500 rounded-full px-3 py-1 transition-transform duration-300 lg:hover:scale-110"
+              className="inline-flex items-center bg-red-500 rounded-full  px-6 py-2 transition-transform duration-300 lg:hover:scale-110"
             >
-              <p className="text-lg font-bold text-gray-800">Cast and crew</p>
+              <p className="text-xl font-bold text-gray-800">Cast</p>
             </Link>
           </div>
         </div>

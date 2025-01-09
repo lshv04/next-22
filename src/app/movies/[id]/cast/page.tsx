@@ -41,6 +41,7 @@ const CastPage: React.FC = () => {
           throw new Error('Failed to fetch cast data');
         }
         const data: ApiResponse = await response.json(); // Tipagem do retorno da API
+        console.log('Fetched Cast Data:', data); // Exibe os dados no console
         setCast(data.cast); // Salva o elenco no estado
       } catch (err: unknown) {
         // Tratamento de erro
