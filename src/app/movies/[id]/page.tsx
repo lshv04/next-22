@@ -2,6 +2,8 @@
 
 import GoldenStarBadge from "@/components/GoldenStarBadge";
 import Spinner from "@/components/Spinner";
+import Link from "next/link";
+
 import React, { useState, useEffect } from "react";
 
 interface MovieDetailsProps {
@@ -125,13 +127,13 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
                   ?.map((country: any) => country.name)
                   .join(", ")}
               </p>
-        
             </div>
             <div className="bord flex flex-col gap-4">
               <p>
-                <strong>Release Date:</strong> <br /> {movieDetails.release_date}
+                <strong>Release Date:</strong> <br />{" "}
+                {movieDetails.release_date}
               </p>
-            
+
               <p>
                 <strong>Budget:</strong> <br /> $
                 {movieDetails.budget.toLocaleString()}
@@ -148,6 +150,14 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
                 </a>
               </p>
             </div>
+          </div>
+          <div className="bord my-4">
+            <Link
+              href={`${id}/cast`}
+              className="inline-flex items-center bg-red-500 rounded-full px-3 py-1 transition-transform duration-300 lg:hover:scale-110"
+            >
+              <p className="text-lg font-bold text-gray-800">Cast and crew</p>
+            </Link>
           </div>
         </div>
       </div>
