@@ -45,9 +45,9 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
         );
         const data = await response.json();
         setMovieDetails(data);
-        console.log(data); // Para debug
+        console.log(data); // Debug log
       } catch (error) {
-        console.error("Erro ao buscar detalhes do filme:", error);
+        console.error("Error fetching movie details:", error);
       } finally {
         setLoading(false);
       }
@@ -58,7 +58,7 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
 
   if (loading) {
     return (
-        <div className="flex justify-center my-24">
+      <div className="flex justify-center my-24">
         <Spinner />
       </div>
     );
@@ -67,17 +67,16 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
   if (!movieDetails) {
     return (
       <div className="mt-40">
-        <h1>Erro</h1>
-        <p>Não foi possível carregar os detalhes do filme.</p>
+        <h1>Error</h1>
+        <p>Could not load movie details.</p>
       </div>
     );
   }
 
   return (
     <div className="mt-20 p-6">
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Imagem do Poster */}
+        {/* Poster Image */}
         <div className="md:col-span-1">
           <img
             src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
@@ -86,7 +85,7 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
           />
         </div>
 
-        {/* Informações do Filme */}
+        {/* Movie Information */}
         <div className="md:col-span-2">
           <div className="bord flex md:flex-row flex-col justify-between items-center gap-4 mb-4">
             <div>
@@ -99,36 +98,46 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
               <div className="bord flex flex-row items-center gap-2">
                 <GoldenStarBadge grade={movieDetails.vote_average} />
                 <p>
-                  <strong>Count :</strong> {movieDetails.vote_count}
+                  <strong>Vote Count:</strong> {movieDetails.vote_count}
                 </p>
               </div>
             </div>
           </div>
 
           <p>
-            <strong>Descrição:</strong> {movieDetails.overview}
+            <strong>Description:</strong> {movieDetails.overview}
           </p>
 
-          {/* Novo Grid para as informações */}
+          {/* Grid for Additional Information */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 bord">
-        
             <div className="bord flex flex-col gap-4">
               <p>
-                <strong>Idioma original:</strong>{" "} <br/>
+                <strong>Original Language:</strong> <br />
                 {movieDetails.original_language.toUpperCase()}
               </p>
               <p>
-                <strong>Status:</strong> <br/>
+                <strong>Status:</strong> <br />
                 {movieDetails.status}
               </p>
               <p>
-                <strong>País de origem:</strong>{" "} <br/>
+                <strong>Origin Country:</strong> <br />
                 {movieDetails.production_countries
                   ?.map((country: any) => country.name)
                   .join(", ")}
               </p>
+        
+            </div>
+            <div className="bord flex flex-col gap-4">
               <p>
-                <strong>Homepage:</strong>{" "} <br/>
+                <strong>Release Date:</strong> <br /> {movieDetails.release_date}
+              </p>
+            
+              <p>
+                <strong>Budget:</strong> <br /> $
+                {movieDetails.budget.toLocaleString()}
+              </p>
+              <p>
+                <strong>Homepage:</strong> <br />
                 <a
                   href={movieDetails.homepage}
                   target="_blank"
@@ -137,17 +146,6 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
                 >
                   {movieDetails.homepage}
                 </a>
-              </p>
-            </div>
-            <div className="bord flex flex-col gap-4">
-              <p>
-                <strong>Data de lançamento:</strong> <br/> {movieDetails.release_date}
-              </p>
-              <p>
-                <strong>Popularidade:</strong> <br/> {movieDetails.popularity}
-              </p>
-              <p>
-                <strong>Orçamento:</strong> <br/> ${movieDetails.budget.toLocaleString()}
               </p>
             </div>
           </div>
