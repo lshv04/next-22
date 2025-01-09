@@ -7,6 +7,7 @@ interface CastMember {
   id: number;
   name: string;
   character: string;
+  profile_path: string | null; // Adicionado profile_path
 }
 
 // Tipagem para os dados da API
@@ -28,6 +29,7 @@ const CastPage: React.FC = () => {
       Authorization:
         'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMzgyYmRhY2FjYjkzYzAyM2M3Y2M3OTRmOTA2OWIwNiIsIm5iZiI6MTcyNTk3MzI3MC40OTcsInN1YiI6IjY2ZTA0MzE2NWEyZDUwZDc4YzhhM2Q5MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kfVuDqRlx14idyE30RImdK6_keO1OTPbrxoVtuUUq40',
     },
+    next: { revalidate: 1800 },
   };
 
   useEffect(() => {
@@ -67,16 +69,32 @@ const CastPage: React.FC = () => {
   }
 
   return (
-    <div className="mt-40">
-      <h1>Movie Cast</h1>
-      <p>Movie ID: {id}</p>
-      <ul>
+    <div className="mt-40 px-4">
+      <h1 className="text-2xl font-bold mb-6">Movie Cast</h1>
+      <p className="mb-6">Movie ID: {id}</p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {cast.map((member) => (
-          <li key={member.id}>
-            <strong>{member.name}</strong> as {member.character}
-          </li>
+          <div
+            key={member.id}
+            className="p-4 bg-gray-100 shadow-md rounded-lg text-center"
+          >
+            {member.profile_path ? (
+              <img
+                src={`https://image.tmdb.org/t/p/w200${member.profile_path}`}
+                alt={member.name}
+                className="w-full h-auto rounded-md mb-4"
+              />
+            ) : (
+              <div className="w-full h-32 bg-gray-300 flex items-center justify-center rounded-md mb-4">
+                <span className="text-sm text-gray-600">No Image</span>
+              </div>
+            )}
+            <h3 className="font-bold">{member.name}</h3>
+            <p className="text-sm text-gray-600">as {member.character}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

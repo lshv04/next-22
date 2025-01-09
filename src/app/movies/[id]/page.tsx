@@ -113,7 +113,7 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
           {/* Grid for Additional Information */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 bord">
             <div className="bord flex flex-col gap-4">
-            <p>
+              <p>
                 <strong>Run time:</strong> <br />
                 {movieDetails.runtime}
               </p>
@@ -141,6 +141,11 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
               <p>
                 <strong>Budget:</strong> <br /> $
                 {movieDetails.budget.toLocaleString()}
+              </p>
+
+              <p>
+                <strong>Revenue:</strong> <br /> $
+                {movieDetails.revenue.toLocaleString()}
               </p>
               <p>
                 <strong>Homepage:</strong> <br />
