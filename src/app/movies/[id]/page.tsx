@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import GoldenStarBadge from "@/components/GoldenStarBadge";
+import React, { useState, useEffect } from "react";
 
 interface MovieDetailsProps {
   params: Promise<{
@@ -9,9 +10,9 @@ interface MovieDetailsProps {
 }
 
 const options = {
-  method: 'GET',
+  method: "GET",
   headers: {
-    accept: 'application/json',
+    accept: "application/json",
     Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_BEARER}`,
   },
   next: { revalidate: 1800 },
@@ -45,7 +46,7 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
         setMovieDetails(data);
         console.log(data); // Para debug
       } catch (error) {
-        console.error('Erro ao buscar detalhes do filme:', error);
+        console.error("Erro ao buscar detalhes do filme:", error);
       } finally {
         setLoading(false);
       }
@@ -86,18 +87,68 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
 
         {/* Informações do Filme */}
         <div className="md:col-span-2">
-          <p><strong>ID do filme:</strong> {id}</p>
-          <p><strong>Título:</strong> {movieDetails.title}</p>
-          <p><strong>Descrição:</strong> {movieDetails.overview}</p>
-          <p><strong>Data de lançamento:</strong> {movieDetails.release_date}</p>
-          <p><strong>Popularidade:</strong> {movieDetails.popularity}</p>
-          <p><strong>Nota média:</strong> {movieDetails.vote_average}</p>
-          <p><strong>Contagem de votos:</strong> {movieDetails.vote_count}</p>
-          <p><strong>Orçamento:</strong> ${movieDetails.budget.toLocaleString()}</p>
-          <p><strong>Idioma original:</strong> {movieDetails.original_language.toUpperCase()}</p>
-          <p><strong>Status:</strong> {movieDetails.status}</p>
-          <p><strong>País de origem:</strong> {movieDetails.production_countries?.map((country: any) => country.name).join(', ')}</p>
-          <p><strong>Homepage:</strong> <a href={movieDetails.homepage} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{movieDetails.homepage}</a></p>
+          <div className="bord flex md:flex-row flex-col justify-between items-center gap-4 mb-4">
+            <div>
+              <h2 className="text-2xl ">
+                <strong>{movieDetails.title}</strong>
+              </h2>
+            </div>
+
+            <div>
+              <div className="bord flex flex-row items-center gap-2">
+                <GoldenStarBadge grade={movieDetails.vote_average} />
+                <p>
+                  <strong>Count :</strong> {movieDetails.vote_count}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            <strong>Descrição:</strong> {movieDetails.overview}
+          </p>
+
+          {/* Novo Grid para as informações */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 bord">
+        
+            <div className="bord flex flex-col gap-4">
+              <p>
+                <strong>Idioma original:</strong>{" "}
+                {movieDetails.original_language.toUpperCase()}
+              </p>
+              <p>
+                <strong>Status:</strong> {movieDetails.status}
+              </p>
+              <p>
+                <strong>País de origem:</strong>{" "}
+                {movieDetails.production_countries
+                  ?.map((country: any) => country.name)
+                  .join(", ")}
+              </p>
+              <p>
+                <strong>Homepage:</strong>{" "}
+                <a
+                  href={movieDetails.homepage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  {movieDetails.homepage}
+                </a>
+              </p>
+            </div>
+            <div className="bord flex flex-col gap-4">
+              <p>
+                <strong>Data de lançamento:</strong> {movieDetails.release_date}
+              </p>
+              <p>
+                <strong>Popularidade:</strong> {movieDetails.popularity}
+              </p>
+              <p>
+                <strong>Orçamento:</strong> ${movieDetails.budget.toLocaleString()}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
