@@ -89,7 +89,7 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
         <div className="md:col-span-2">
           <div className="bord flex md:flex-row flex-col justify-between items-center gap-4 mb-4">
             <div>
-              <h2 className="text-2xl ">
+              <h2 className="text-xl ">
                 <strong>{movieDetails.title}</strong>
               </h2>
             </div>
@@ -113,20 +113,21 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
         
             <div className="bord flex flex-col gap-4">
               <p>
-                <strong>Idioma original:</strong>{" "}
+                <strong>Idioma original:</strong>{" "} <br/>
                 {movieDetails.original_language.toUpperCase()}
               </p>
               <p>
-                <strong>Status:</strong> {movieDetails.status}
+                <strong>Status:</strong> <br/>
+                {movieDetails.status}
               </p>
               <p>
-                <strong>País de origem:</strong>{" "}
+                <strong>País de origem:</strong>{" "} <br/>
                 {movieDetails.production_countries
                   ?.map((country: any) => country.name)
                   .join(", ")}
               </p>
               <p>
-                <strong>Homepage:</strong>{" "}
+                <strong>Homepage:</strong>{" "} <br/>
                 <a
                   href={movieDetails.homepage}
                   target="_blank"
@@ -139,13 +140,13 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
             </div>
             <div className="bord flex flex-col gap-4">
               <p>
-                <strong>Data de lançamento:</strong> {movieDetails.release_date}
+                <strong>Data de lançamento:</strong> <br/> {movieDetails.release_date}
               </p>
               <p>
-                <strong>Popularidade:</strong> {movieDetails.popularity}
+                <strong>Popularidade:</strong> <br/> {movieDetails.popularity}
               </p>
               <p>
-                <strong>Orçamento:</strong> ${movieDetails.budget.toLocaleString()}
+                <strong>Orçamento:</strong> <br/> ${movieDetails.budget.toLocaleString()}
               </p>
             </div>
           </div>
