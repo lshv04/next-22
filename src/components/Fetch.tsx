@@ -141,7 +141,7 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
               </div>
               
               <Link
-                href={`/movies/${movie.id}`}
+                href={`movies/${movie.id}`}
                 className="inline-flex items-center bg-red-500 rounded-full px-3 py-1 transition-transform duration-300 lg:hover:scale-110"
               >
                 <p className="text-lg font-bold text-gray-800">More</p>

@@ -1,6 +1,7 @@
 "use client";
 
 import GoldenStarBadge from "@/components/GoldenStarBadge";
+import Spinner from "@/components/Spinner";
 import React, { useState, useEffect } from "react";
 
 interface MovieDetailsProps {
@@ -57,8 +58,8 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
 
   if (loading) {
     return (
-      <div className="mt-40">
-        <h1>Carregando detalhes do filme...</h1>
+        <div className="flex justify-center my-24">
+        <Spinner />
       </div>
     );
   }
@@ -74,7 +75,7 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
 
   return (
     <div className="mt-20 p-6">
-      <h1 className="text-3xl font-bold mb-8">Detalhes do Filme</h1>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Imagem do Poster */}
         <div className="md:col-span-1">
