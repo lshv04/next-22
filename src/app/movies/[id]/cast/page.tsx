@@ -69,7 +69,7 @@ const CastPage: React.FC = () => {
   }
 
   return (
-    <div className="mt-40 px-4">
+    <div className="mt-40 container mx-auto px-4">
       <h1 className="text-2xl font-bold mb-6 text-center">Movie Cast</h1>
     
 
@@ -77,7 +77,7 @@ const CastPage: React.FC = () => {
         {cast.map((member) => (
           <div
             key={member.id}
-            className="p-4 bg-gray-100 shadow-md rounded-lg text-center"
+            className=" bg-gray-100 shadow-md rounded-lg text-center"
           >
             {member.profile_path ? (
               <img
