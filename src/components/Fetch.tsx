@@ -110,13 +110,13 @@ const Fetch: React.FC<FetchProps> = ({ endpoint }) => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="bord">
-      <h1 className="text-2xl font-bold mb-4">Movies</h1>
+    <div className="bord  ">
+  
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {movies.map((movie) => (
           <div
             key={movie.id}
-            className="bg-white shadow-md rounded-lg overflow-hidden bord flex justify-between items-center flex-col"
+            className="bg-gray-300 shadow-md rounded-lg overflow-hidden bord flex justify-between items-center flex-col"
           >
             <div className="bord">
               <img

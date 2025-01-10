@@ -74,13 +74,13 @@ const CastPage: React.FC = () => {
 
   return (
     <div className="mt-40 container mx-auto px-4">
-      <h1 className="text-2xl font-bold mb-6 text-center">Movie Cast</h1>
+      <h1 className="text-2xl font-bold mb-6 text-center text-white">Movie Cast</h1>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {cast.map((member) => (
           <div
             key={member.id}
-            className=" bg-gray-100 shadow-md rounded-lg text-center"
+            className=" bg-gray-300 shadow-md rounded-lg text-center"
           >
             {member.profile_path ? (
               <img
@@ -94,7 +94,7 @@ const CastPage: React.FC = () => {
               </div>
             )}
             <h3 className="font-bold">{member.name}</h3>
-            <p className="text-sm text-gray-600">as {member.character}</p>
+            <p className="text-sm text-gray-600 pb-2">as {member.character}</p>
           </div>
         ))}
       </div>

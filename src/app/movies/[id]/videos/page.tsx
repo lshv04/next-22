@@ -83,8 +83,8 @@ const VideosPage = () => {
   }
 
   return (
-    <div className="mt-40 container mx-auto px-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">Videos Page</h1>
+    <div className="mt-40 container mx-auto px-4 text-white">
+      <h1 className="text-2xl font-bold mb-4 text-center ">Videos Page</h1>
       
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
         {videos.map((video) => (
@@ -94,8 +94,8 @@ const VideosPage = () => {
           >
             <div className='bord'>
             <h3 className="text-lg font-semibold mb-2">{video.name}</h3>
-            <p className="text-sm text-gray-600">Type: {video.type}</p>
-            <p className="text-sm text-gray-600">Site: {video.site}</p>
+            <p className="text-sm text-gray-400">Type: {video.type}</p>
+            <p className="text-sm text-gray-400">Site: {video.site}</p>
             </div>
             <div className='bord'>
             <a
