@@ -1,10 +1,12 @@
+import Fetch from '@/components/Fetch';
 import React from 'react';
 
 const TopRated: React.FC = () => {
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Top Rated</h1>
-      <p>Veja os filmes mais bem avaliados.</p>
+    <div  className='bord mt-20'>
+      <h1>Top rated</h1>
+      <p>Explore os filmes mais bem avaliados.</p>
+      <Fetch endpoint="top_rated" />
     </div>
   );
 };

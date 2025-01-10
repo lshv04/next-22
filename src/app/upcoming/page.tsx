@@ -1,10 +1,12 @@
+import Fetch from '@/components/Fetch';
 import React from 'react';
 
 const Upcoming: React.FC = () => {
   return (
-    <div style={{ padding: '20px' }}>
+    <div  className='bord mt-20'>
       <h1>Upcoming</h1>
-      <p>Confira os filmes que estão por vir.</p>
+      <p>Explore os filmes embreve nos cinemas.</p>
+      <Fetch endpoint="upcoming" />
     </div>
   );
 };

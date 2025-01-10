@@ -1,10 +1,12 @@
+import Fetch from '@/components/Fetch';
 import React from 'react';
 
 const Popular: React.FC = () => {
   return (
-    <div style={{ padding: '20px' }}>
+    <div  className='bord mt-20'>
       <h1>Popular</h1>
-      <p>Descubra os filmes mais populares no momento.</p>
+      <p>Explore os filmes Populares.</p>
+      <Fetch endpoint="popular" />
     </div>
   );
 };
