@@ -160,7 +160,7 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
               </p>
             </div>
           </div>
-          <div className="bord my-4">
+          <div className="bord my-4 flex flex-row gap-4">
             <Link
               href={`${id}/cast`}
               className="inline-flex items-center bg-red-500 rounded-full  px-6 py-2 transition-transform duration-300 lg:hover:scale-110"

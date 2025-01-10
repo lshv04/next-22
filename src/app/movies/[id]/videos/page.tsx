@@ -77,16 +77,32 @@ const VideosPage = () => {
 
   return (
     <div className="mt-40">
-      <h1>Videos Page</h1>
-      <p>Movie ID: {id}</p>
-      <h2>Videos:</h2>
-      <ul>
+      <h1 className="text-2xl font-bold mb-4 text-center">Videos Page</h1>
+      
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
         {videos.map((video) => (
-          <li key={video.id}>
-            <strong>{video.name}</strong> ({video.type}) - {video.site}
-          </li>
+          <div
+            key={video.id}
+            className="p-4 flex justify-between border flex-col border-gray-300 rounded-lg shadow-md lg:hover:shadow-lg transition-shadow"
+          >
+            <div className='bord'>
+            <h3 className="text-lg font-semibold mb-2">{video.name}</h3>
+            <p className="text-sm text-gray-600">Type: {video.type}</p>
+            <p className="text-sm text-gray-600">Site: {video.site}</p>
+            </div>
+            <div className='bord'>
+            <a
+              href={`https://www.youtube.com/watch?v=${video.key}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline mt-2 block"
+            >
+              Watch on {video.site}
+            </a>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
