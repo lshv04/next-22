@@ -1,6 +1,7 @@
 "use client";
-import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import Spinner from "@/components/Spinner";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 // Tipagem para os membros do elenco
 interface CastMember {
@@ -23,11 +24,10 @@ const CastPage: React.FC = () => {
 
   // Configuração para a API
   const options = {
-    method: 'GET',
+    method: "GET",
     headers: {
-      accept: 'application/json',
-      Authorization:
-        `Bearer ${process.env.NEXT_PUBLIC_API_BEARER}`,
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_BEARER}`,
     },
     next: { revalidate: 1800 },
   };
@@ -40,17 +40,17 @@ const CastPage: React.FC = () => {
           options
         );
         if (!response.ok) {
-          throw new Error('Failed to fetch cast data');
+          throw new Error("Failed to fetch cast data");
         }
         const data: ApiResponse = await response.json(); // Tipagem do retorno da API
-        console.log('Fetched Cast Data:', data); // Exibe os dados no console
+        console.log("Fetched Cast Data:", data); // Exibe os dados no console
         setCast(data.cast); // Salva o elenco no estado
       } catch (err: unknown) {
         // Tratamento de erro
         if (err instanceof Error) {
           setError(err.message);
         } else {
-          setError('An unknown error occurred');
+          setError("An unknown error occurred");
         }
       } finally {
         setLoading(false); // Finaliza o carregamento
@@ -61,7 +61,11 @@ const CastPage: React.FC = () => {
   }, [id]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex justify-center my-24">
+        <Spinner />
+      </div>
+    );
   }
 
   if (error) {
@@ -71,7 +75,6 @@ const CastPage: React.FC = () => {
   return (
     <div className="mt-40 container mx-auto px-4">
       <h1 className="text-2xl font-bold mb-6 text-center">Movie Cast</h1>
-    
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {cast.map((member) => (

@@ -1,5 +1,6 @@
 "use client";
 
+import Spinner from '@/components/Spinner';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -64,8 +65,13 @@ const VideosPage = () => {
   }, [id]);
 
   if (loading) {
-    return <h2 className="mt-40">Loading...</h2>;
+    return (
+      <div className="flex justify-center my-24">
+        <Spinner />
+      </div>
+    );
   }
+
 
   if (error) {
     return (
