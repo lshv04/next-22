@@ -27,7 +27,7 @@ const CastPage: React.FC = () => {
     headers: {
       accept: 'application/json',
       Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMzgyYmRhY2FjYjkzYzAyM2M3Y2M3OTRmOTA2OWIwNiIsIm5iZiI6MTcyNTk3MzI3MC40OTcsInN1YiI6IjY2ZTA0MzE2NWEyZDUwZDc4YzhhM2Q5MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kfVuDqRlx14idyE30RImdK6_keO1OTPbrxoVtuUUq40',
+        `Bearer ${process.env.NEXT_PUBLIC_API_BEARER}`,
     },
     next: { revalidate: 1800 },
   };
@@ -70,10 +70,10 @@ const CastPage: React.FC = () => {
 
   return (
     <div className="mt-40 px-4">
-      <h1 className="text-2xl font-bold mb-6">Movie Cast</h1>
-      <p className="mb-6">Movie ID: {id}</p>
+      <h1 className="text-2xl font-bold mb-6 text-center">Movie Cast</h1>
+    
 
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {cast.map((member) => (
           <div
             key={member.id}

@@ -167,6 +167,12 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
             >
               <p className="text-xl font-bold text-gray-800">Cast</p>
             </Link>
+            <Link
+              href={`${id}/videos`}
+              className="inline-flex items-center bg-red-500 rounded-full  px-6 py-2 transition-transform duration-300 lg:hover:scale-110"
+            >
+              <p className="text-xl font-bold text-gray-800">Videos</p>
+            </Link>
           </div>
         </div>
       </div>
