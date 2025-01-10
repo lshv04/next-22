@@ -33,40 +33,21 @@ const Home = async () => {
 
   return (
     <div
+      className="relative min-h-screen bg-cover bg-center text-white"
       style={{
-        position: 'relative',
-        zIndex: -1, // Ensures it's below the navbar
         backgroundImage: `url(https://image.tmdb.org/t/p/w1280${mostPopularMovie.poster_path})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        minHeight: '100vh',
-        color: '#fff',
+        zIndex: -1,
       }}
     >
       {/* Dark overlay */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)', // 50% opacity dark overlay
-        }}
-      ></div>
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
       {/* Content */}
-      <div
-        style={{
-          position: 'relative',
-          zIndex: 1, // Ensures content is above the overlay
-          padding: '20px',
-        }}
-      >
-        <h1>Most Popular Movie</h1>
-        <h2>{mostPopularMovie.title}</h2>
-        <p>{mostPopularMovie.overview}</p>
-        <p>Popularity: {mostPopularMovie.popularity}</p>
+      <div className="relative z-10 p-8">
+        <h1 className="text-4xl font-bold mb-4">Most Popular Movie</h1>
+        <h2 className="text-2xl font-semibold mb-2">{mostPopularMovie.title}</h2>
+        <p className="mb-4">{mostPopularMovie.overview}</p>
+        <p className="text-lg">Popularity: {mostPopularMovie.popularity}</p>
       </div>
     </div>
   );
