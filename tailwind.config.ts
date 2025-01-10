@@ -40,6 +40,10 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        gradient: {
+          dark: "#000000",
+          light: "#1a1a2e",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -55,6 +59,9 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+      },
+      backgroundImage: {
+        'gradient-dark-light': 'linear-gradient(to right, #000000, #1a1a2e)',
       },
     },
   },

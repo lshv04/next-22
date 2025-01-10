@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+body {
+  @apply bg-gradient-dark-light min-h-screen;
+}
 
 /* .bord{
   border: 1px solid black;
