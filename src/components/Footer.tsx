@@ -1,5 +1,5 @@
-import React from 'react';
-import { FaLinkedin, FaGithub, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
+import React from "react";
+import Sticker from "./Sticker";
 
 const Footer: React.FC = () => {
   return (
@@ -11,44 +11,7 @@ const Footer: React.FC = () => {
         </p>
 
         {/* Social Links */}
-        <div className=" flex space-x-4">
-          <a
-            href="https://www.linkedin.com/in/leandrohosken/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
-          >
-            <FaLinkedin size={20} />
-            
-          </a>
-          <a
-            href="https://github.com/lshv04"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
-          >
-            <FaGithub size={20} />
-            
-          </a>
-          <a
-            href="https://wa.me/5531987670611"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
-          >
-            <FaWhatsapp size={20} />
-            
-          </a>
-          <a
-            href="mailto:lshv04@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
-          >
-            <FaEnvelope size={20} />
-            
-          </a>
-        </div>
+        <Sticker />
       </div>
     </footer>
   );
