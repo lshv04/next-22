@@ -90,14 +90,14 @@ export function Navbar() {
         </SheetContent>
       </Sheet>
       <Link href="/" className="mr-6 bord" prefetch={false}>
-        <p>LH Movies</p>
+        <p className="italic lg:text-2xl md:hover:text-gray-300">LH Movies</p>
         <span className="sr-only">Leandro´s Logo</span>
       </Link>
       {/* Menu Tradicional apenas em telas grandes */}
       <nav className="hidden md:flex gap-6 bord mx-auto">
         <Link
           href="/now-playing"
-          className={`group inline-flex h-9 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors ${getLinkClass(
+          className={`group inline-flex h-9 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors hover:text-gray-300 ${getLinkClass(
             "/now-playing"
           )}`}
           prefetch={false}
@@ -106,7 +106,7 @@ export function Navbar() {
         </Link>
         <Link
           href="/popular"
-          className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors ${getLinkClass(
+          className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-gray-300 ${getLinkClass(
             "/popular"
           )}`}
           prefetch={false}
@@ -115,7 +115,7 @@ export function Navbar() {
         </Link>
         <Link
           href="/top-rated"
-          className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors ${getLinkClass(
+          className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-gray-300  ${getLinkClass(
             "/top-rated"
           )}`}
           prefetch={false}
@@ -124,7 +124,7 @@ export function Navbar() {
         </Link>
         <Link
           href="/upcoming"
-          className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors ${getLinkClass(
+          className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-gray-300 ${getLinkClass(
             "/upcoming"
           )}`}
           prefetch={false}
