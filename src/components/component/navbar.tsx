@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
+import Sticker from "../Sticker";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ export function Navbar() {
     setIsOpen(false); // Fecha o menu ao clicar em um link
   };
 
-  const getLinkClass = (href:string) => {
+  const getLinkClass = (href: string) => {
     return pathname === href
       ? "text-blue-500 font-bold border-b-2 border-blue-500"
       : "text-black md:text-white ";
@@ -86,15 +87,18 @@ export function Navbar() {
             >
               Upcoming
             </Link>
+            <div >
+              <Sticker/>
+            </div>
           </div>
         </SheetContent>
       </Sheet>
       <Link href="/" className="mr-6 bord" prefetch={false}>
-        <p className="italic lg:text-2xl md:hover:text-gray-300  playwrite-au-sa-">LH Movies</p>
+        <p className="italic lg:text-2xl md:hover:text-gray-300 ">LH Movies</p>
         <span className="sr-only">Leandro´s Logo</span>
       </Link>
       {/* Menu Tradicional apenas em telas grandes */}
-      <nav className="hidden md:flex gap-6 bord mx-auto">
+      <nav className="hidden md:flex gap-6 bord  ">
         <Link
           href="/now-playing"
           className={`group inline-flex h-9 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors hover:text-gray-300 ${getLinkClass(
@@ -132,11 +136,14 @@ export function Navbar() {
           Upcoming
         </Link>
       </nav>
+      <div className="hidden lg:block">
+        <Sticker />
+      </div>
     </header>
   );
 }
 
-function MenuIcon(props:any) {
+function MenuIcon(props: any) {
   return (
     <svg
       {...props}
