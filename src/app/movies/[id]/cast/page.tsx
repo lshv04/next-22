@@ -73,7 +73,7 @@ const CastPage: React.FC = () => {
   }
 
   return (
-    <div className="mt-40 container mx-auto px-4">
+    <div className="mt-40 container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-6 text-center text-white">Movie Cast</h1>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
