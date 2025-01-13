@@ -1,8 +1,8 @@
 "use client";
 
-import Spinner from '@/components/Spinner';
-import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import Spinner from "@/components/Spinner";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type Params = {
   id: string;
@@ -29,11 +29,10 @@ const VideosPage = () => {
   const [videos, setVideos] = useState<Video[]>([]);
 
   const options = {
-    method: 'GET',
+    method: "GET",
     headers: {
-      accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMzgyYmRhY2FjYjkzYzAyM2M3Y2M3OTRmOTA2OWIwNiIsIm5iZiI6MTcyNTk3MzI3MC40OTcsInN1YiI6IjY2ZTA0MzE2NWEyZDUwZDc4YzhhM2Q5MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kfVuDqRlx14idyE30RImdK6_keO1OTPbrxoVtuUUq40',
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_BEARER}`,
     },
     next: { revalidate: 1800 },
   };
@@ -53,10 +52,12 @@ const VideosPage = () => {
         }
 
         const data: ApiResponse = await response.json();
-        console.log('API Response:', data); // Exibe as informações no console
+        console.log("API Response:", data); // Exibe as informações no console
         setVideos(data.results);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An unknown error occurred');
+        setError(
+          err instanceof Error ? err.message : "An unknown error occurred"
+        );
       } finally {
         setLoading(false);
       }
@@ -73,7 +74,6 @@ const VideosPage = () => {
     );
   }
 
-
   if (error) {
     return (
       <div className="mt-40">
@@ -85,27 +85,27 @@ const VideosPage = () => {
   return (
     <div className="mt-40 container mx-auto p-4  text-white">
       <h1 className="text-2xl font-bold mb-4 text-center ">Videos Page</h1>
-      
+
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
         {videos.map((video) => (
           <div
             key={video.id}
             className="p-2 flex justify-between border flex-col border-gray-300 rounded-lg shadow-md lg:hover:shadow-lg transition-shadow"
           >
-            <div className='bord'>
-            <h3 className="text-lg font-semibold mb-2">{video.name}</h3>
-            <p className="text-sm text-gray-400">Type: {video.type}</p>
-            <p className="text-sm text-gray-400">Site: {video.site}</p>
+            <div className="bord">
+              <h3 className="text-lg font-semibold mb-2">{video.name}</h3>
+              <p className="text-sm text-gray-400">Type: {video.type}</p>
+              <p className="text-sm text-gray-400">Site: {video.site}</p>
             </div>
-            <div className='bord'>
-            <a
-              href={`https://www.youtube.com/watch?v=${video.key}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline mt-2 block"
-            >
-              Watch on {video.site}
-            </a>
+            <div className="bord">
+              <a
+                href={`https://www.youtube.com/watch?v=${video.key}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:underline mt-2 block"
+              >
+                Watch on {video.site}
+              </a>
             </div>
           </div>
         ))}
