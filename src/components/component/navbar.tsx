@@ -90,7 +90,7 @@ export function Navbar() {
         </SheetContent>
       </Sheet>
       <Link href="/" className="mr-6 bord" prefetch={false}>
-        <p className="italic lg:text-2xl md:hover:text-gray-300">LH Movies</p>
+        <p className="italic lg:text-2xl md:hover:text-gray-300  playwrite-au-sa-">LH Movies</p>
         <span className="sr-only">Leandro´s Logo</span>
       </Link>
       {/* Menu Tradicional apenas em telas grandes */}

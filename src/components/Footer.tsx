@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
         </p>
 
         {/* Social Links */}
-        <div className="sticker flex space-x-4">
+        <div className=" flex space-x-4">
           <a
             href="https://www.linkedin.com/in/leandrohosken/"
             target="_blank"
