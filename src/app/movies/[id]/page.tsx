@@ -131,6 +131,18 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
                   ?.map((country: any) => country.name)
                   .join(", ")}
               </p>
+              <p>
+                <strong>Homepage:</strong> <br />
+                <a
+                  href={movieDetails.homepage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  {movieDetails.homepage}
+                </a>
+              </p>
+           
             </div>
             <div className="bord flex flex-col gap-4">
               <p>
@@ -147,17 +159,8 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
                 <strong>Revenue:</strong> <br /> $
                 {movieDetails.revenue.toLocaleString()}
               </p>
-              <p>
-                <strong>Homepage:</strong> <br />
-                <a
-                  href={movieDetails.homepage}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  {movieDetails.homepage}
-                </a>
-              </p>
+            
+          
             </div>
           </div>
           <div className="bord my-4 flex flex-row gap-4">
