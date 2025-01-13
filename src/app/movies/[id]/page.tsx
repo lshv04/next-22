@@ -76,8 +76,8 @@ const MovieDetails = ({ params }: MovieDetailsProps) => {
   }
 
   return (
-    <div className="mt-20 p-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
+    <div className="mt-20 p-6  ">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white  ">
         {/* Poster Image */}
         <div className="md:col-span-1">
           <img

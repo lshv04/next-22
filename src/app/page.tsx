@@ -34,7 +34,7 @@ const Home = async () => {
   return (
     <div className="">
       <div
-        className="relative min-h-screen bg-cover bg-center text-white"
+        className="relative min-h-screen bg-cover bg-center text-white flex flex-col"
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/w1280${mostPopularMovie.poster_path})`,
           zIndex: -1,
@@ -44,7 +44,7 @@ const Home = async () => {
         <div className="absolute inset-0 bg-black bg-opacity-70"></div>
 
         {/* Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 mt-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 mt-14 flex-grow">
           <div className="relative z-10 p-8 col-span-1 md:col-span-1 lg:col-span-1">
             <h1 className="text-4xl font-bold mb-4">Most Popular Movie:</h1>
             <h2 className="text-2xl font-semibold mb-2">
@@ -58,7 +58,7 @@ const Home = async () => {
           </div>
         </div>
       </div>
-      <div></div>
+   
     </div>
   );
 };
